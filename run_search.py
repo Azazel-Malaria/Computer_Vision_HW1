@@ -3,13 +3,11 @@ from __future__ import annotations
 import argparse
 import itertools
 from pathlib import Path
-
 from mlp.trainer import train_model
 from mlp.utils import ensure_dir, save_json
 
-
 def parse_args():
-    parser = argparse.ArgumentParser(description="Grid search for Fashion-MNIST MLP.")
+    parser = argparse.ArgumentParser(description="Grid search")
     parser.add_argument("--data_dir", type=str, default="./data")
     parser.add_argument("--search_dir", type=str, default="./outputs/grid_search")
     parser.add_argument("--epochs", type=int, default=20)
@@ -17,7 +15,6 @@ def parse_args():
     parser.add_argument("--val_ratio", type=float, default=0.1)
     parser.add_argument("--seed", type=int, default=42)
     return parser.parse_args()
-
 
 if __name__ == "__main__":
     args = parse_args()
@@ -67,7 +64,6 @@ if __name__ == "__main__":
     results = sorted(results, key=lambda x: x["best_val_acc"], reverse=True)
     save_json({"results": results, "best": results[0]}, search_dir / "search_results.json")
 
-    print("\n=== Search finished ===")
-    print("Top-3 configurations:")
+    print("Top-3 config")
     for item in results[:3]:
         print(item)

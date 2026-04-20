@@ -2,9 +2,7 @@ from __future__ import annotations
 
 import argparse
 from pathlib import Path
-
 from mlp.trainer import train_model
-
 
 def parse_args():
     parser = argparse.ArgumentParser(description="Train a 3-layer MLP on Fashion-MNIST.")
@@ -27,5 +25,5 @@ if __name__ == "__main__":
     config = vars(args)
     summary = train_model(config, Path(args.output_dir))
     print("\nTraining finished.")
-    print(f"Best validation accuracy: {summary['best_val_acc']:.4f}")
+    print(f"Best val accuracy: {summary['best_val_acc']:.4f}")
     print(f"Best epoch: {summary['best_epoch']}")

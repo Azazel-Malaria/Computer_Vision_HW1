@@ -14,7 +14,6 @@ from mlp.utils import (
     plot_misclassified_examples,
 )
 
-
 def parse_args():
     parser = argparse.ArgumentParser(description="Visualize first-layer weights and misclassified examples.")
     parser.add_argument("--data_dir", type=str, default="./data")
